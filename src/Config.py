@@ -27,7 +27,7 @@ elif MODE == 'msas':
 
 IANA_CSV_FILE_PATH = "./utils/service-names-port-numbers.csv"
 EPISODE_WINDOW_LENGTH = 150  # window length to aggregate inter-host abnormal episodes
-READ_BEHAVIOR_FROM_DATABASE = True # read intra-host sensitive behaviors from database
+READ_BEHAVIOR_FROM_DATABASE = False # read intra-host sensitive behaviors from database
 RESERVED = 1
 NETWORK_EPISODE = 1 
 HOST_BEHAVIOUR = 2 
