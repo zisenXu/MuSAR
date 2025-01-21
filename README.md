@@ -28,11 +28,15 @@ To pre-process these datasets from scratch, do as the follows:
 
 - CPTC2018 dataset
   - Download and unzip the dataset from the public [website](https://mirror.rit.edu/cptc/). Five categories of representative lightweight security logs are `suricata_alert.json`, `bash_history.json`, `linux_secure.log/auth.log`, `imap_too_small.json`, and `mongodb.json`.
+  - The duration of six scenarios (i.e., teams) is 9 hours, from 2018-11-03 13:30:00 to 23:00:00.
+  - Due to the lack of attack-related ground truth, we label network alarms where both the attacker and victim are Local Area Network (LAN) addresses (i.e., 10.0.\*.\*) and all historical command logs (i.e., .bash\_history) as attack-related traces, as shown in "label" field in the preprocessed data.
 
 - MSAS dataset
   - Download and unzip the dataset from [Google Drive](https://drive.google.com/file/d/1y3YEjbWCLlQYDDzUhNwZiWYkPDSPUYav/view?usp=sharing). The `savestore.csv` file contains application logs exported from ElasticSearch, including `.bash_history` and `auth.log`. The raw traffic and audit logs from the other five hosts are stored in separate folders.
+  - The duration of two scenarios is 1 hours, with scenario 1 spanning from 2024-11-11 16:15:00 to 17:15:00 and scenario 1 spanning from 2024-11-11 17:30:00 to 18:30:00
+  - The ground truth of the MSAS dataset is presented in "label" field in the preprocessed data. In addition, we provide a detailed breakdown of the attack steps and ground truth distribution for two attack scenarios from the MSAS dataset, as described in the appendix B of the paper.
 
-The provided data parsing and preprocessing modules are mainly implemented with MySQL interfaces for data access and manipulation, organized into several directories: `auth_parse`, `bash_parse`, `imap_parse`, and `mongo_parse`. If you want to read from files instead, you just need to modify the I/O interfaces. In addition, we provide a detailed breakdown of the attack steps and ground truth distribution for two attack scenarios from the MSAS dataset, as described in the appendix B of the paper.
+The provided data parsing and preprocessing modules are mainly implemented with MySQL interfaces for data access and manipulation, organized into several directories: `auth_parse`, `bash_parse`, `imap_parse`, and `mongo_parse`. If you want to read from files instead, you just need to modify the I/O interfaces. 
 
 ### File Structure
 
@@ -71,3 +75,4 @@ MuSAR can be easily adapted to your dataset, and the process involves the follow
 - Ensure that your dataset follows MuSAR's structured representation of two types of log-level traces: inter-host connections and intra-host operations, with relevant fields as shown in `src/DataLoader.py`.
 - Based on your dataset's scenario, modify the `whiteList` variable in `Config.py` or implement a false alarm filtering method in `FalseAlarmFilter.py` to eliminate redundant data.
 - For inter-host connections, you need to supplement the mapping rules between signatures and attack stages in the AIF framework in `AttackStage.py`. MuSAR can automatically associate the AIF framework with the MITRE ATT&CK framework.
+
