@@ -76,16 +76,6 @@ MuSAR can be easily adapted to your dataset, and the process involves the follow
 - Based on your dataset's scenario, modify the `whiteList` variable in `Config.py` or implement a false alarm filtering method in `FalseAlarmFilter.py` to eliminate redundant data.
 - For inter-host connections, you need to supplement the mapping rules between signatures and attack stages in the AIF framework in `AttackStage.py`. MuSAR can automatically associate the AIF framework with the MITRE ATT&CK framework.
 
-, which focus on attack scenarios. A larger time window might lead to the coupling of multiple multi-step attacks, which can interfere with the accuracy and effectiveness of the analysis.
-
-### Evaluate Your Dataset
-
-MuSAR can be easily adapted to your dataset, and the process involves the following steps:
-
-- Ensure that your dataset follows MuSAR's structured representation of two types of log-level traces: inter-host connections and intra-host operations, with relevant fields as shown in `src/DataLoader.py`.
-- Based on your dataset's scenario, modify the `whiteList` variable in `Config.py` or implement a false alarm filtering method in `FalseAlarmFilter.py` to eliminate redundant data.
-- For inter-host connections, you need to supplement the mapping rules between signatures and attack stages in the AIF framework in `AttackStage.py`. MuSAR can automatically associate the AIF framework with the MITRE ATT&CK framework.
-
 ## Real-time Analysis System
 
 We develop an interactive real-time analysis system that encapsulates MuSAR's core functionalities to demonstrate the feasibility of deployment in production environments. The system can be access at [here](https://bit.ly/4h11wwZ).
