@@ -2,7 +2,7 @@
 
 **MuSAR: Multi-Step Attack Reconstruction from Lightweight Security Logs via Event-Level Semantic Association**
 
-![overview](imgs/overview.svg)
+![overview](assets/overview.svg)
 
 In this paper, we present MuSAR, a framework for real-time reconstruction of multi-step attacks in multi-host environments using lightweight security logs (network alarms and application logs), leveraging the observation that such attacks typically exhibit hop-based patterns with evidence dispersed across semantically complementary log sources. MuSAR performs semantic analysis to create abstract representations, consolidating logs into security events that capture underlying attack activities. Through integration with the MITRE ATT\&CK framework, MuSAR maps heterogeneous events to attack stages, achieving semantic alignment within a unified attack lifecycle, and implements a heuristic algorithm to identify potential multi-step attacks and reconstruct complete attack sequences based on event-level semantic associations.
 
@@ -76,3 +76,20 @@ MuSAR can be easily adapted to your dataset, and the process involves the follow
 - Based on your dataset's scenario, modify the `whiteList` variable in `Config.py` or implement a false alarm filtering method in `FalseAlarmFilter.py` to eliminate redundant data.
 - For inter-host connections, you need to supplement the mapping rules between signatures and attack stages in the AIF framework in `AttackStage.py`. MuSAR can automatically associate the AIF framework with the MITRE ATT&CK framework.
 
+, which focus on attack scenarios. A larger time window might lead to the coupling of multiple multi-step attacks, which can interfere with the accuracy and effectiveness of the analysis.
+
+### Evaluate Your Dataset
+
+MuSAR can be easily adapted to your dataset, and the process involves the following steps:
+
+- Ensure that your dataset follows MuSAR's structured representation of two types of log-level traces: inter-host connections and intra-host operations, with relevant fields as shown in `src/DataLoader.py`.
+- Based on your dataset's scenario, modify the `whiteList` variable in `Config.py` or implement a false alarm filtering method in `FalseAlarmFilter.py` to eliminate redundant data.
+- For inter-host connections, you need to supplement the mapping rules between signatures and attack stages in the AIF framework in `AttackStage.py`. MuSAR can automatically associate the AIF framework with the MITRE ATT&CK framework.
+
+## Real-time Analysis System
+
+We develop an interactive real-time analysis system that encapsulates MuSAR's core functionalities to demonstrate the feasibility of deployment in production environments. The system can be access at [here](https://bit.ly/4h11wwZ).
+
+Furthermore, we provide a supplementary demonstration video is provided to illustrate the system's operational workflow and functionality.
+
+<video width="640" height="360" controls>   <source src="assets/Demonstration Video.mp4" type="video/mp4">   Your browser does not support the video tag. </video>
