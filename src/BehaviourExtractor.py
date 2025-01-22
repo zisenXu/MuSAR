@@ -134,38 +134,38 @@ class BehaviourExtractor(object):
                     node_attribute_list.append(node_attribute)
                     continue
             
-                neighbor_index = -1
-                neighbor_flag = False
+                max_association_score = 0
+                max_association_score_index = -1
                 for j, pre_attribute in enumerate(node_attribute_list[::-1]):
                     j = len(node_attribute_list) - 1 - j
-                    if cmd_type == pre_attribute['cmd_type'] and is_sensitive and pre_attribute['is_sensitive'] and i-j <= 3 and not neighbor_flag: # association weight
-                        neighbor_index = j
-                        neighbor_flag = True
-                    
+                    if max_association_score >= SEQ_W / (i - j):
+                        break
+                    if cmd_type == pre_attribute['cmd_type'] and is_sensitive and pre_attribute['is_sensitive'] and i-j <= 5:  # Association Weight
+                        score = ASSO_W / (i - j)
+                        if score > max_association_score:
+                            max_association_score = score
+                            max_association_score_index = j             
                     if input == "None" and output == "stdout" and len(args_list) == 0:
                         break
-
-                    if pre_attribute["input"] == "None" and pre_attribute["output"] == "stdout" and len(pre_attribute["args_list"]) == 0: 
+                    if pre_attribute["input"] == "None" and pre_attribute["output"] == "stdout" and len(pre_attribute["args_list"]) == 0:
                         continue
-
-                    if input != "None" and input != "stdout" and pre_attribute["output"] == input and (is_sensitive or pre_attribute['is_sensitive']):  # sequential weight
-                        if user_behaviour_list[j] == 0:
-                            user_behaviour_list[j] = behaviour_id
-                            behaviour_id += 1
-                        user_behaviour_list[i] = user_behaviour_list[j]
-                        break
-
-                    if input != "None" and pre_attribute["input"] == input and (is_sensitive or pre_attribute['is_sensitive']) and i-j <= 5: # similarity weight
-                        if user_behaviour_list[j] == 0:
-                            user_behaviour_list[j] = behaviour_id
-                            behaviour_id += 1
-                        user_behaviour_list[i] = user_behaviour_list[j]
-                        break
-
-                if user_behaviour_list[i] == 0:
-                    if neighbor_flag:
-                        user_behaviour_list[i] = user_behaviour_list[neighbor_index]
-                    elif is_sensitive:
+                    if input != "None" and input != "stdout" and pre_attribute["output"] == input and (is_sensitive or pre_attribute['is_sensitive']):  # Sequential Weight
+                        score = SEQ_W / (i - j)
+                        if score > max_association_score:
+                            max_association_score = score
+                            max_association_score_index = j
+                    if input != "None" and pre_attribute["input"] == input and (is_sensitive or pre_attribute['is_sensitive']) and i-j <= 10: # Similarity Weight
+                        score = SIM_W / (i - j)
+                        if score > max_association_score:
+                            max_association_score = score
+                            max_association_score_index = j
+                if max_association_score_index != -1:
+                    if user_behaviour_list[max_association_score_index] == 0:
+                        user_behaviour_list[max_association_score_index] = behaviour_id
+                        behaviour_id += 1
+                    user_behaviour_list[i] = user_behaviour_list[max_association_score_index]
+                else:
+                    if is_sensitive:
                         user_behaviour_list[i] = behaviour_id
                         behaviour_id += 1
 
