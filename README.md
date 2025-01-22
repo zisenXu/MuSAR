@@ -32,7 +32,7 @@ To pre-process these datasets from scratch, do as the follows:
   - Due to the lack of attack-related ground truth, we label network alarms where both the attacker and victim are Local Area Network (LAN) addresses (i.e., 10.0.\*.\*) and all historical command logs (i.e., .bash\_history) as attack-related traces, as shown in "label" field in the preprocessed data.
 
 - MSAS dataset
-  - Download and unzip the dataset from [Google Drive](https://drive.google.com/file/d/1y3YEjbWCLlQYDDzUhNwZiWYkPDSPUYav/view?usp=sharing). The `savestore.csv` file contains application logs exported from ElasticSearch, including `.bash_history` and `auth.log`. The raw traffic and audit logs from the other five hosts are stored in separate folders.
+  - Download and unzip the dataset from [Google Drive](https://drive.google.com/file/d/1u3pptIsKUdaHuHl4S19uLRSUDD5dl5EE/view?usp=sharing). The `savestore.csv` file contains application logs exported from ElasticSearch, including `.bash_history` and `auth.log`. The raw traffic and audit logs from the other five hosts are stored in separate folders.
   - The duration of two scenarios is 1 hours, with scenario 1 spanning from 2024-11-11 16:15:00 to 17:15:00 and scenario 1 spanning from 2024-11-11 17:30:00 to 18:30:00
   - The ground truth of the MSAS dataset is presented in "label" field in the preprocessed data. In addition, we provide a detailed breakdown of the attack steps and ground truth distribution for two attack scenarios from the MSAS dataset, as described in the appendix B of the paper.
 
