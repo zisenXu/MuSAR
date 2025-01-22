@@ -19,7 +19,6 @@ if MODE == 'cptc':
         dispatcher.dispatch()
 ### use MSAS dataset
 elif MODE == 'msas':
-    ### 连接靶场环境数据库
     scene_list = ["s1", "s2"]
     scene_timeUtils = {
         "s1": TimeUtils("2024-11-11 16:15:00", "2024-11-11 17:15:00", 60*60),
