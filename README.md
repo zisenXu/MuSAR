@@ -80,4 +80,8 @@ MuSAR can be easily adapted to your dataset, and the process involves the follow
 
 We develop an interactive real-time analysis system that encapsulates MuSAR's core functionalities to demonstrate the feasibility of deployment in production environments. The system can be access at [here](https://bit.ly/4h11wwZ).
 
-Furthermore, we provide a supplementary demonstration [video](assets/Demonstration_Video.mp4) is provided to illustrate the system's operational workflow and functionality.
+Furthermore, we provide a supplementary demonstration video is provided to illustrate the system's operational workflow and functionality.
+
+<video width="640" height="360" controls>
+  <source src="assets/Demonstration_Video.mp4" type="video/mp4">
+</video>
