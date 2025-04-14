@@ -1,6 +1,6 @@
 # MuSAR
 
-**MuSAR: Multi-Step Attack Reconstruction from Lightweight Security Logs via Event-Level Semantic Association**
+**MuSAR: Multi-Step Attack Reconstruction from Lightweight Security Logs via Event-Level Semantic Association in Multi-Host Environments**
 
 ![overview](assets/overview.svg)
 
