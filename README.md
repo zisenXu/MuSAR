@@ -98,3 +98,20 @@ Additionally, we provide a supplementary demonstration video `assets/demo.mp4` t
 <video width="640" height="360" controls>
   <source src="assets/demo.mp4" type="video/mp4">
 </video>
+
+## 📚 Publication
+
+Our work has been accepted at the **28th International Symposium on Research in Attacks, Intrusions and Defenses (RAID 2025)**. 
+
+```json
+@inproceedings{yang2025,
+author = {Liu, Yang and Xu, Zisen and Luo, Zian and Shang, Jin'ao and Zhang, Shilong and Zhang, Haichuan and Liu, Ting},
+title = {MuSAR: Multi-Step Attack Reconstruction from Lightweight Security Logs via Event-Level Semantic Association in Multi-Host Environments},
+year = {2025},
+publisher = {Association for Computing Machinery},
+address = {Gold Coast, Australia},
+keywords = {Lightweight Security Logs, Semantic Alignment, Event-level Semantic Association, Attack Reconstruction},
+series = {RAID '25}
+}
+```
+
